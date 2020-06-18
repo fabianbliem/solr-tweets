@@ -31,7 +31,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Pet Shelter',
+      title: 'What happend',
       inject: true,
       template: './src/index.html',
       minify: {
