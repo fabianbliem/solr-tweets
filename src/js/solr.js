@@ -4,30 +4,12 @@ export const USERNAME_FIELD = "user.name";
 export const TEXT_FIELD = "text";
 
 export default class Solr {
-    constructor(solrUrl = "http://52.174.37.46:8983/solr/tweets") {
+    // constructor(solrUrl = "http://52.174.37.46:8983/solr/tweets") {
+    constructor(solrUrl = "http://localhost:8983/solr/new_core") {
         this.solrUrl = solrUrl;
     }
 
-    async commit() {
-        await this.postSolrRequest("update?commit=true");
-    }
-
-    async addDocument(uniqueId, fields) {
-        await this.postSolrRequest("update?overwrite=true&commitWithin=1000", [{ id: uniqueId, ...fields }]);
-    }
-
-    async deleteAll() {
-        await this.postSolrRequest("update?commit=true", {
-            delete: {
-                query: "*:*",
-            },
-        });
-    }
-
     async search(query, start = 0, rows = 10, filter) {
-        console.log(query);
-        console.log(filter);
-
         return await this.postSolrRequest("select", {
             params: {
                 fl: "*,*",
@@ -35,14 +17,12 @@ export default class Solr {
                 fq: filter,
                 start: start,
                 rows: rows,
-                /* TODO: Put further common query parameters (https://lucene.apache.org/solr/guide/common-query-parameters.html) here. */
             },
             query: {
                 edismax: {
                     query,
                      qf: "text^5 user.name^1",
                     // mm: "100%",
-                    /* TODO: Put further edismax query parameters (https://lucene.apache.org/solr/guide/8_5/the-extended-dismax-query-parser.html) here. */
                 },
             },
         });
@@ -55,13 +35,24 @@ export default class Solr {
             headers: { "Content-Type": "application/json" },
         });
 
-        // console.log(jsonResponse)
-
         if (!jsonResponse.ok) {
             throw new Error(jsonResponse.statusText);
         }
 
         const response = await jsonResponse.json();
+        if(url==="spell"){
+            return response.spellcheck;
+        }
         return response.response;
+    }
+
+    async recom(query){
+        return await this.postSolrRequest("spell", {
+            params: {
+                wt: "json",
+                spellcheck: "on",
+                q: query
+            }
+        });
     }
 }
