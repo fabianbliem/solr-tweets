@@ -41,7 +41,6 @@ function initSearch() {
   dayButton.addEventListener('click', async ()=>{
     const input = document.getElementById('text');
     let filterInputFrom = document.getElementById('from_date').value;
-    console.log(filterInputFrom)
     let filterInputTo = document.getElementById('to_date').value;
     filterInputTo = filterInputTo.split(':');
     filterInputFrom = filterInputFrom.split(':');
