@@ -21,6 +21,20 @@ const getFilter = (from,to) =>{
   return "timestamp_ms:["+fromFilter+" TO "+toFilter+"]";
 }
 
+function boldString(str, find) {
+  var reg = new RegExp('('+find+')', 'gi');
+  return str.replace(reg, '<b>$1</b>');
+}
+
+const highlight = (text, search) =>{
+  let returnText= text
+  for(const word of search.split(" ")){
+    returnText= boldString(returnText,word);
+  }
+  console.log(returnText);
+  return returnText;
+}
+
 function initSearch() {
 
   const dayButton= document.querySelector('.btn-day');
@@ -40,7 +54,8 @@ function initSearch() {
     for (const result of results.docs.slice(0, 10)) {
       outDiv.innerHTML += `<li>${result[TEXT_FIELD]}: ${result[USERNAME_FIELD]}</li>`;
  }
- outDiv.innerHTML += '</ul>';
+  outDiv.innerHTML += '</ul>';
+  outDiv.innerHTML = highlight(outDiv.innerHTML,input.value);
   });
 }
 

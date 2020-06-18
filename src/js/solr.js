@@ -4,7 +4,7 @@ export const USERNAME_FIELD = "user.name";
 export const TEXT_FIELD = "text";
 
 export default class Solr {
-    constructor(solrUrl = "http://localhost:8983/solr/tweets2") {
+    constructor(solrUrl = "http://52.174.37.46:8983/solr/tweets") {
         this.solrUrl = solrUrl;
     }
 
