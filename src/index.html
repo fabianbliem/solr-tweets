@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pet Shelter</title>
+  <title>Tweets from hell</title>
 </head>
 
 <body>
@@ -18,8 +18,12 @@
   </header>
   <main id="main">
     <div class="heading">
-        <h2>Querry hier</h2>
-        <label class="iconcont" for="openfilters"><img class="icon" src="<%= require('./images/menu.svg')%>" alt="menu"></label>
+        <h2>Results</h2>
+        <div>
+          <label class="light" for="sortby">sort by follower</label>
+          <input type="checkbox" id="sortby">
+          <label class="iconcont" for="openfilters"><img class="icon" src="<%= require('./images/menu.svg')%>" alt="menu"></label>
+        </div>
         <input type="checkbox" id="openfilters">
         <div class="filter">
           <span class="marked">Datum</span><br>
@@ -34,22 +38,16 @@
           <button class="btn">Apply</button>
         </div>
     </div>
-    <div class="tweetcard">
-      <p class="upp">&#128579;</p>
-      <span class="cardhead">
-        <p class="uname marked">some user</p> <p class="tweetdate light">9.11.2016 12:30</p>
-      </span>
-      <p class="tweet">So on edge... I'm gonna miss bush after this.</p>
+    <div id="output">
+      <div class="card tweet">
+        <p class="upp">&#128579;</p>
+        <span class="cardhead">
+          <p class="uname marked">some user</p> <p class="tweetdate light">9.11.2016 12:30</p>
+        </span>
+        <p class="tweet">So on edge... I'm gonna miss bush after this.</p>
+      </div>
     </div>
   </main>
-
-  <h1>Pet Shelter</h1>
-  <textarea id="text"></textarea>
-  <div id="output"><h1>Ergebnisssssssssssssssse</h1></div>
-
-  <div class="overview">
-    <button class="btn btn-day">Most popular day</button>
-  </div>
 
 
 </body>

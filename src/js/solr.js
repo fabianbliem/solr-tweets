@@ -2,10 +2,11 @@ import fetch from "node-fetch";
 
 export const USERNAME_FIELD = "user.name";
 export const TEXT_FIELD = "text";
+export const TIME_FIELD = "created_at";
 
 export default class Solr {
     // constructor(solrUrl = "http://52.174.37.46:8983/solr/tweets") {
-    constructor(solrUrl = "http://localhost:8983/solr/new_core") {
+    constructor(solrUrl = "http://localhost:8983/solr/tweets2") {
         this.solrUrl = solrUrl;
     }
 
