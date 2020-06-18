@@ -8,24 +8,34 @@
 </head>
 
 <body>
-
-  <input type="time" name="von" id="from_date">
-  <input type="time" name="bis" id="to_date">
   <header>
     <h1>tweets from hell</h1>
-    <form class='search'>
-        <label for="search"><img class="icon" src="./images/search.svg" alt="search"></label>
+    <div class='search'>
+        <label for="search"><img class="icon" src="<%= require('./images/search.svg')%>" alt="search"></label>
         <input id="text" type="text" placeholder="wtf" name="search">
-        <button class="button" type="submit">go</button>
-    </form>
+        <button class="btn-day">go</button>
+    </div>
   </header>
   <main>
     <div class="heading">
         <h2>Querry hier</h2>
-        <span class="iconcont"><img class="icon" src="./images/menu.svg" alt="menu"></span>
+        <label class="iconcont" for="openfilters"><img class="icon" src="<%= require('./images/menu.svg')%>" alt="menu"></label>
+        <input type="checkbox" id="openfilters">
+        <div class="filter">
+          Datum <br>
+          <label>Von <br>
+            <input type="time" step="1" name="von" id="from_date" value="00:00:00">
+          </label>
+          <label>Bis <br>
+            <input type="time" step="1" name="bis" id="to_date" value="23:59:59">
+          </label>
+        </div>
     </div>
-    <div class="respcard">
-
+    <div class="tweetcard">
+      <p class="upp">&#128579;</p>
+      <p class="uname">some user</p>
+      <p class="tweetdate">9.11.2016 12:30</p>
+      <p class="tweet">So on edge... I'm gonna miss bush after this.</p>
     </div>
   </main>
 

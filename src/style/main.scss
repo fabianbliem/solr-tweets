@@ -1,8 +1,13 @@
 @import './vars.scss';
 
-html{
+body{
+    background-color: #fff;
+    input[type=checkbox]{
+      visibility: hidden;
+    }
     .icon{
         width: 20px;
+        
     }
     header{
         display: flex;
@@ -29,7 +34,7 @@ html{
                         fill: $primaryc;
                     }
                 }
-                .button{
+                .btn-day{
                     visibility: visible;
                     border: none;
                     border-radius: 20px;
@@ -53,24 +58,60 @@ html{
                 border: none;
                 width: 80%;
             }
-            .button{
+            .btn-day{
                 visibility: hidden;
             }
         }
     }
-    background-color: #fff;
-    main{
-        margin:5% 18%;
+  main{
+      margin:5% 18%;
+      border: $borderlight;
+      .heading{
+          display: flex;
+          justify-content: space-between;
+          .iconcont{
+              vertical-align: middle;
+              .icon{
+                  vertical-align: middle;
+                  transform: rotate(90deg);
+              }
+          }
+          .filter{
+            display:block;
+            position:relative;
+            right:30vw;
+            bottom:0;
+            border: $borderlight;
+            background-color: #000;
+            padding: 1em;
+            visibility: hidden;
+          }
+          #openfilters:checked + .filter {
+            visibility: visible;
+          }
+      }    
+      .tweetcard{
         border: $borderlight;
-        .heading{
-            display: flex;
-            .iconcont{
-                vertical-align: middle;
-                .icon{
-                    vertical-align: middle;
-                }
-            }
-        }    
+        display:grid;
+        grid-template-rows: 5vw 10vw 10vw;
+        .upp{
+          grid-area: pic;
+          font-size: 3em;
+        }
+        .uname{
+          grid-area: name;
+        }
+        .tweetdate{
+          grid-area: date;
+        }
+        .tweet{
+          grid-area: tweet;
+        }
+        grid-template-areas: 
+        "pic name date ."
+        "pic tweet tweet ."
+        ". tweet tweet .";
         
-    }
+      }   
+  }
 }
