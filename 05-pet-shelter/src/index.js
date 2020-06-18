@@ -18,6 +18,11 @@ const solr = new Solr();
 const suchen = async (line) => {
   const results = await solr.search(line.trim());
   console.log(`Found ${results.numFound} results, showing top 5\n`);
+
+   for (const result of results.docs.slice(0, 5)) {
+        console.log(`${result[TEXT_FIELD]}: ${result[USERNAME_FIELD]}`);
+   }
+   return results;
 }
 
 function calculateFoodOrder(numAnimals, avgFood) {
@@ -68,7 +73,7 @@ function mostPopularDays(week) {
 /**
 * The main function that sets up the PetStore. First the visitors for each weekday are set. 
 */
-async function initPetShelter() {
+function initPetShelter() {
   let monday = new Weekday('monday', 42);
   let tuesday = new Weekday('tuesday', 25);
   let wednesday = new Weekday('wednesday', 42);
@@ -111,9 +116,18 @@ async function initPetShelter() {
   + calculateFoodOrder(petShelter.animals.filter(animal => animal.type=='dog').length,demoDog.foodPerWeekInKg)).toFixed(2));
 
   // TODO: Add Event Listener on the most popular day Button. It should call the mostPopularDays() function. Then add the return to the .popular-day element
-  let popularDay = await suchen("trump");
   const dayButton= document.querySelector('.btn-day');
-  dayButton.addEventListener('click',()=> document.querySelector(".popular-day").innerHTML="Most popular day this week: " + popularDay);
+  dayButton.addEventListener('click', async ()=>{
+    const input = document.getElementById('text');
+    const results = await suchen(input.value);
+
+    
+
+    for (const result of results.docs.slice(0, 5)) {
+      document.getElementById('output').innerHTML += `${result[TEXT_FIELD]}: ${result[USERNAME_FIELD]}`;
+ }
+
+  });
 
 }
 
