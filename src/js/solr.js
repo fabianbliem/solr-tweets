@@ -38,7 +38,7 @@ export default class Solr {
             query: {
                 edismax: {
                     query,
-                    // qf: "text_t^10 user.name_t^1",
+                     qf: "text^5 user.name^1",
                     // mm: "100%",
                     /* TODO: Put further edismax query parameters (https://lucene.apache.org/solr/guide/8_5/the-extended-dismax-query-parser.html) here. */
                 },
