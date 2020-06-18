@@ -13,16 +13,18 @@
     <div class='search'>
         <label for="search"><img class="icon" src="<%= require('./images/search.svg')%>" alt="search"></label>
         <input class="query" id="text" type="text" placeholder="wtf" name="search">
-        <label class="light filterlabel">Von: </label><input type="time" step="1" name="von" id="from_date" value="00:00:00">
-        <label class="light filterlabel">Bis: </label><input type="time" step="1" name="bis" id="to_date" value="23:59:59">
         <button class="btn btn-day">go</button>
     </div>
   </header>
+  <div class='search filter'>
+    <label class="light filterlabel">Von: </label><input type="time" step="1" name="von" id="from_date" value="00:00:00">
+    <label class="light filterlabel">Bis: </label><input type="time" step="1" name="bis" id="to_date" value="23:59:59">
+    <label class="light" for="sortby">sort by follower</label>
+    <input type="checkbox" id="sortby">
+  </div>
   <main id="main">
     <div class="heading">
-        <h2>Results</h2>
-        <label class="light" for="sortby">sort by follower</label>
-        <input type="checkbox" id="sortby">
+        <h2 id="resultsheading">Results</h2>
     </div>
     <div id="output">
       <div class="card tweet">

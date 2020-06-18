@@ -56,6 +56,8 @@ function initSearch() {
     let suchwort = input.value;
     results = await suchen(suchwort,filter,checkbox.checked);
 
+    document.getElementById("resultsheading").innerHTML = "Results:\t"+results.numFound;
+
     let outDiv = document.getElementById('output');
 
     outDiv.innerHTML = ""

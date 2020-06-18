@@ -14,9 +14,6 @@ body{
       font-family:'Muli';
       font-weight: 900;
     }
-    input[type=checkbox]{
-      display:none;
-    }
     input[type=time]{
       margin-left: .5em;
       float: right;
@@ -48,51 +45,56 @@ body{
             margin:0;
             font-size: 3em;
         }
-        .search {
-            display: flex;
-            margin-top: auto;
-            margin-bottom: auto;
-            justify-content: space-between;
-            margin-left: 2vw;
-            height: 2.2em;
-            padding: .05em 0 .05em .5em;
-            border: $borderlight;
-            border-radius: 20px;
-            width: 40vw;
-            vertical-align: middle;
-            &:focus-within{
-                border: $borderblue;
-                transition: $simpletrans;
-                .icon{
-                    svg{
-                        fill: $primaryc;
-                    }
-                }
-                .btn-day{
-                    visibility: visible;
-                    transition: $simpletrans;
-                }
-            }
-            label{
-                display: inline-block;
-                .icon{
-                    margin-top: 35%;
-                }
-                line-height: 2.2em;
-            }
-            input{
-              border: none;
-              margin-left: 1em;
-              margin-right: 1em;
-              &.query{
-                width: 70%;
-              }
-            }
-            .btn-day{
-                visibility: hidden;
-            }
-        }
+        
     }
+    .search {
+      display: flex;
+      margin-top: auto;
+      margin-bottom: auto;
+      justify-content: center;
+      margin-left: 2vw;
+      height: 2.2em;
+      padding: .05em 0 .05em .5em;
+      border: $borderlight;
+      border-radius: 20px;
+      width: 40vw;
+      vertical-align: middle;
+      &:focus-within{
+          border: $borderblue;
+          transition: $simpletrans;
+          .icon{
+              svg{
+                  fill: $primaryc;
+              }
+          }
+          .btn-day{
+              visibility: visible;
+              transition: $simpletrans;
+          }
+      }
+      label{
+          display: inline-block;
+          .icon{
+              margin-top: 35%;
+          }
+          line-height: 2.2em;
+      }
+      input{
+        border: none;
+        margin-left: 1em;
+        margin-right: 1em;
+        &.query{
+          width: 70%;
+        }
+      }
+      .btn-day{
+          visibility: hidden;
+      }
+      &.filter{
+        margin: 1% auto;
+        width: 60vw;
+      }
+  }
   main{
       margin:5% 24vw;
       .heading{
@@ -100,6 +102,8 @@ body{
           justify-content: space-between;
           border: $borderlight;
           padding:1em;
+          border-top-left-radius: 15px;
+          border-top-right-radius: 15px;
           >*{
             margin:0;
           }
