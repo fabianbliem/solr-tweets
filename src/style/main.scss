@@ -1,72 +1,76 @@
-@import 'base';
+@import './vars.scss';
 
-.btn {
-  cursor: pointer;
-  color:white;
-  background: var(--pink);
-  padding: 1rem;
-  border-style: none;
-  border-radius: .8em;
-  max-width: 16em;
-
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 2rem;
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-}
-
-.galleries {
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 2rem;
-}
-
-.gallery {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-gap: 20px;
-  align-items: stretch;
-  background: white;
-  padding: 2rem;
-  list-style: none;
-
-  img {
-    width: 100%;
-    object-fit: cover;
-    border-radius: 1em;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.35);
-  }
-
-  li {
-    position: relative;
-    cursor: pointer;
-  }
-}
-
-.counter {
-  position: absolute;
-  bottom: 10px;
-  right: 5px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 1rem;
-  border-radius: 100%;
-  background: rgba(255,255,255,0.7);
-}
-
-.overview {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
-  justify-items: center;
+html{
+    .icon{
+        width: 20px;
+    }
+    header{
+        display: flex;
+        padding-left: 20vw;
+        h1 {
+            color: $primaryc;
+            font-family: 'Arista';
+            margin:0;
+        }
+        .search {
+            display: flex;
+            justify-content: space-between;
+            margin-left: 2vw;
+            padding: .05em .5em;
+            border: $borderlight;
+            border-radius: 20px;
+            width: 30vw;
+            vertical-align: middle;
+            &:focus-within{
+                border: $borderblue;
+                transition: $simpletrans;
+                .icon{
+                    path{
+                        fill: $primaryc;
+                    }
+                }
+                .button{
+                    visibility: visible;
+                    border: none;
+                    border-radius: 20px;
+                    color:white;
+                    background-color: $primaryc;
+                    transition: $simpletrans;
+                    &:hover{
+                        background-color: $hoverc;
+                        transition: background-color ease .2s;
+                    }
+                }
+            }
+            label{
+                display: inline-block;
+                vertical-align: middle;
+                .icon{
+                    margin-top: 25%;
+                }
+            }
+            input{
+                border: none;
+                width: 80%;
+            }
+            .button{
+                visibility: hidden;
+            }
+        }
+    }
+    background-color: #fff;
+    main{
+        margin:5% 18%;
+        border: $borderlight;
+        .heading{
+            display: flex;
+            .iconcont{
+                vertical-align: middle;
+                .icon{
+                    vertical-align: middle;
+                }
+            }
+        }    
+        
+    }
 }
