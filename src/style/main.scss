@@ -1,4 +1,4 @@
-@import url(//db.onlinewebfonts.com/c/d4358481c43110657b0393c2efad2f3a?family=Arista);
+@import url(//db.onlinewebfonts.com/c/ff7b55e6b1bbced22c1e9ca8ead91520?family=Arista);
 @import './vars.scss';
 
 body{
@@ -26,7 +26,7 @@ body{
       border-radius: 20px;
       color:white;
       background-color: $primaryc;
-      padding:.4em .8em;
+      padding:.6em .8em;
       &:hover{
           background-color: $hoverc;
           transition: background-color ease .2s;
@@ -37,29 +37,34 @@ body{
         
     }
     header{
-        padding-top: 2em;
+        padding-top: 1em;
         display: flex;
         justify-content: center;
         // padding-left: 15vw;
         h1 {
             color: $primaryc;
             font-family: 'Arista';
+            font-weight: 100;
             margin:0;
+            font-size: 3em;
         }
         .search {
             display: flex;
+            margin-top: auto;
+            margin-bottom: auto;
             justify-content: space-between;
             margin-left: 2vw;
-            padding: .05em .5em;
+            height: 2.2em;
+            padding: .05em 0 .05em .5em;
             border: $borderlight;
             border-radius: 20px;
-            width: 30vw;
+            width: 40vw;
             vertical-align: middle;
             &:focus-within{
                 border: $borderblue;
                 transition: $simpletrans;
                 .icon{
-                    path{
+                    svg{
                         fill: $primaryc;
                     }
                 }
@@ -70,14 +75,18 @@ body{
             }
             label{
                 display: inline-block;
-                vertical-align: middle;
                 .icon{
-                    margin-top: 25%;
+                    margin-top: 35%;
                 }
+                line-height: 2.2em;
             }
             input{
-                border: none;
-                width: 80%;
+              border: none;
+              margin-left: 1em;
+              margin-right: 1em;
+              &.query{
+                width: 70%;
+              }
             }
             .btn-day{
                 visibility: hidden;

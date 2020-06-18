@@ -81,7 +81,7 @@ function output(outDiv, suchwort, results){
   for (const result of results.docs.slice(0, 10)) {
      
     outDiv.innerHTML += 
-    `<div class="tweetcard">
+    `<div class="card tweet">
     <p class="upp">&#128579;</p>
     <span class="cardhead">
       <p class="uname marked">${result[USERNAME_FIELD]}</p> <p class="tweetdate light">${result[TIME_FIELD]}</p>

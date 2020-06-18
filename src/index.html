@@ -12,31 +12,17 @@
     <h1>tweets from hell</h1>
     <div class='search'>
         <label for="search"><img class="icon" src="<%= require('./images/search.svg')%>" alt="search"></label>
-        <input id="text" type="text" placeholder="wtf" name="search">
+        <input class="query" id="text" type="text" placeholder="wtf" name="search">
+        <label class="light filterlabel">Von: </label><input type="time" step="1" name="von" id="from_date" value="00:00:00">
+        <label class="light filterlabel">Bis: </label><input type="time" step="1" name="bis" id="to_date" value="23:59:59">
         <button class="btn btn-day">go</button>
     </div>
   </header>
   <main id="main">
     <div class="heading">
         <h2>Results</h2>
-        <div>
-          <label class="light" for="sortby">sort by follower</label>
-          <input type="checkbox" id="sortby">
-          <label class="iconcont" for="openfilters"><img class="icon" src="<%= require('./images/menu.svg')%>" alt="menu"></label>
-        </div>
-        <input type="checkbox" id="openfilters">
-        <div class="filter">
-          <span class="marked">Datum</span><br>
-          <label>Von
-            <input type="time" step="1" name="von" id="from_date" value="00:00:00">
-          </label>
-          <br>
-          <label>Bis
-            <input type="time" step="1" name="bis" id="to_date" value="23:59:59">
-          </label>
-          <br>
-          <button class="btn">Apply</button>
-        </div>
+        <label class="light" for="sortby">sort by follower</label>
+        <input type="checkbox" id="sortby">
     </div>
     <div id="output">
       <div class="card tweet">
