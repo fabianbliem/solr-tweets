@@ -50,10 +50,11 @@ function initSearch() {
     
     let outDiv = document.getElementById('output');
     outDiv.innerHTML = '<ul>';
-
+    removeOld(true)
     for (const result of results.docs.slice(0, 10)) {
       outDiv.innerHTML += `<li>${result[TEXT_FIELD]}: ${result[USERNAME_FIELD]}</li>`;
- }
+      createTweetCard(result[USERNAME_FIELD], result[TEXT_FIELD])
+    }
   outDiv.innerHTML += '</ul>';
   outDiv.innerHTML = highlight(outDiv.innerHTML,input.value);
   });
@@ -64,3 +65,24 @@ document.addEventListener("DOMContentLoaded", () =>  {
     initSearch();
   }
 });
+function removeOld(noFilter){
+  if (noFilter){
+    const oldTweets = document.querySelectorAll('.tweetcard')
+    console.log(oldTweets)
+    oldTweets.forEach(tweet => {
+      tweet.remove()
+    });
+  }
+}
+function createTweetCard(name, text){
+  const tweet = document.createElement("div")
+  tweet.classList.add("tweetcard")
+  tweet.innerHTML = `
+  <p class="upp">&#128579;</p>
+  <span class="cardhead">
+    <p class="uname marked">${name}</p> <p class="tweetdate light">9.11.2016</p>
+  </span>
+  <p class="tweet">${text}</p>
+  `
+  document.getElementById("main").appendChild(tweet)
+}

@@ -1,17 +1,45 @@
+@import url(//db.onlinewebfonts.com/c/d4358481c43110657b0393c2efad2f3a?family=Arista);
 @import './vars.scss';
 
 body{
     background-color: #fff;
+    font-family: 'Hind';
+    .marked{
+      font-weight: 700;
+    }
+    .light{
+      color: #aaa
+    }
+    h2, h3{
+      font-family:'Muli';
+      font-weight: 900;
+    }
     input[type=checkbox]{
-      visibility: hidden;
+      display:none;
+    }
+    input[type=time]{
+      margin-left: .5em;
+      float: right;
+    }
+    .btn{
+      border: none;
+      border-radius: 20px;
+      color:white;
+      background-color: $primaryc;
+      padding:.4em .8em;
+      &:hover{
+          background-color: $hoverc;
+          transition: background-color ease .2s;
+      }
     }
     .icon{
         width: 20px;
         
     }
     header{
+        padding-top: 2em;
         display: flex;
-        padding-left: 20vw;
+        padding-left: 15vw;
         h1 {
             color: $primaryc;
             font-family: 'Arista';
@@ -36,15 +64,7 @@ body{
                 }
                 .btn-day{
                     visibility: visible;
-                    border: none;
-                    border-radius: 20px;
-                    color:white;
-                    background-color: $primaryc;
                     transition: $simpletrans;
-                    &:hover{
-                        background-color: $hoverc;
-                        transition: background-color ease .2s;
-                    }
                 }
             }
             label{
@@ -64,11 +84,15 @@ body{
         }
     }
   main{
-      margin:5% 18%;
-      border: $borderlight;
+      margin:5% 24vw;
       .heading{
           display: flex;
           justify-content: space-between;
+          border: $borderlight;
+          padding:1em;
+          >*{
+            margin:0;
+          }
           .iconcont{
               vertical-align: middle;
               .icon{
@@ -77,40 +101,51 @@ body{
               }
           }
           .filter{
-            display:block;
-            position:relative;
-            right:30vw;
-            bottom:0;
+            display: block;
+            visibility:hidden;
+            position:absolute;
             border: $borderlight;
-            background-color: #000;
+            background-color: #fff;
             padding: 1em;
-            visibility: hidden;
+            transition: top $simpletrans;
+            .btn{
+              transition: none;
+            }
           }
           #openfilters:checked + .filter {
-            visibility: visible;
+            visibility:visible;
+            right:24.6vw;
+            margin-top: 2.2em;
+            transition: $simpletrans;
           }
       }    
       .tweetcard{
-        border: $borderlight;
         display:grid;
-        grid-template-rows: 5vw 10vw 10vw;
+        grid-template-columns: auto 1fr 1fr;
+        column-gap: 10px;
+        border: $borderlight;
+        border-top:none;
+        text-align: left;
+        padding: .5em;
         .upp{
           grid-area: pic;
-          font-size: 3em;
+          font-size: 2.5em;
+          margin:0
         }
-        .uname{
-          grid-area: name;
-        }
-        .tweetdate{
-          grid-area: date;
+        .cardhead{
+          grid-area: header;
+          p{
+            display: inline;
+            margin-right:1em;
+          }
         }
         .tweet{
           grid-area: tweet;
         }
         grid-template-areas: 
-        "pic name date ."
-        "pic tweet tweet ."
-        ". tweet tweet .";
+        "pic header header"
+        "pic tweet tweet"
+        ". tweet tweet";
         
       }   
   }

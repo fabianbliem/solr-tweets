@@ -13,28 +13,32 @@
     <div class='search'>
         <label for="search"><img class="icon" src="<%= require('./images/search.svg')%>" alt="search"></label>
         <input id="text" type="text" placeholder="wtf" name="search">
-        <button class="btn-day">go</button>
+        <button class="btn btn-day">go</button>
     </div>
   </header>
-  <main>
+  <main id="main">
     <div class="heading">
         <h2>Querry hier</h2>
         <label class="iconcont" for="openfilters"><img class="icon" src="<%= require('./images/menu.svg')%>" alt="menu"></label>
         <input type="checkbox" id="openfilters">
         <div class="filter">
-          Datum <br>
-          <label>Von <br>
+          <span class="marked">Datum</span><br>
+          <label>Von
             <input type="time" step="1" name="von" id="from_date" value="00:00:00">
           </label>
-          <label>Bis <br>
+          <br>
+          <label>Bis
             <input type="time" step="1" name="bis" id="to_date" value="23:59:59">
           </label>
+          <br>
+          <button class="btn">Apply</button>
         </div>
     </div>
     <div class="tweetcard">
       <p class="upp">&#128579;</p>
-      <p class="uname">some user</p>
-      <p class="tweetdate">9.11.2016 12:30</p>
+      <span class="cardhead">
+        <p class="uname marked">some user</p> <p class="tweetdate light">9.11.2016 12:30</p>
+      </span>
       <p class="tweet">So on edge... I'm gonna miss bush after this.</p>
     </div>
   </main>
