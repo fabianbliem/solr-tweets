@@ -40,7 +40,7 @@ export default class Solr {
             query: {
                 edismax: {
                     query,
-                     qf: "text^5 user.name^1",
+                    qf: "text^5 user.name^1",
                     // mm: "100%",
                     /* TODO: Put further edismax query parameters (https://lucene.apache.org/solr/guide/8_5/the-extended-dismax-query-parser.html) here. */
                 },
@@ -48,7 +48,7 @@ export default class Solr {
         });
     }
 
-    async postSolrRequest(url, body){
+    async postSolrRequest(url, body) {
         const jsonResponse = await fetch(`${this.solrUrl}/${url}`, {
             method: "POST",
             body: JSON.stringify(body),
