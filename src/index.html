@@ -8,24 +8,38 @@
 </head>
 
 <body>
-
-  <input type="time" step="1" name="von" id="from_date">
-  <input type="time" step="1" name="bis" id="to_date">
   <header>
     <h1>tweets from hell</h1>
-    <form class='search'>
-        <label for="search"><img class="icon" src="./images/search.svg" alt="search"></label>
+    <div class='search'>
+        <label for="search"><img class="icon" src="<%= require('./images/search.svg')%>" alt="search"></label>
         <input id="text" type="text" placeholder="wtf" name="search">
-        <button class="button" type="submit">go</button>
-    </form>
+        <button class="btn btn-day">go</button>
+    </div>
   </header>
-  <main>
+  <main id="main">
     <div class="heading">
         <h2>Querry hier</h2>
-        <span class="iconcont"><img class="icon" src="./images/menu.svg" alt="menu"></span>
+        <label class="iconcont" for="openfilters"><img class="icon" src="<%= require('./images/menu.svg')%>" alt="menu"></label>
+        <input type="checkbox" id="openfilters">
+        <div class="filter">
+          <span class="marked">Datum</span><br>
+          <label>Von
+            <input type="time" step="1" name="von" id="from_date" value="00:00:00">
+          </label>
+          <br>
+          <label>Bis
+            <input type="time" step="1" name="bis" id="to_date" value="23:59:59">
+          </label>
+          <br>
+          <button class="btn">Apply</button>
+        </div>
     </div>
-    <div class="respcard">
-
+    <div class="tweetcard">
+      <p class="upp">&#128579;</p>
+      <span class="cardhead">
+        <p class="uname marked">some user</p> <p class="tweetdate light">9.11.2016 12:30</p>
+      </span>
+      <p class="tweet">So on edge... I'm gonna miss bush after this.</p>
     </div>
   </main>
 

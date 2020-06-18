@@ -1,5 +1,6 @@
-import "regenerator-runtime/runtime.js";
-import Solr, { TEXT_FIELD, USERNAME_FIELD } from "./js/solr";
+/* eslint-disable no-restricted-syntax */
+import 'regenerator-runtime/runtime.js';
+import Solr, { TEXT_FIELD, USERNAME_FIELD } from './js/solr';
 import './style/main.scss';
 
 const solr = new Solr();
@@ -21,18 +22,18 @@ const getFilter = (from,to) =>{
 }
 
 function boldString(str, find) {
-  var reg = new RegExp('('+find+')', 'gi');
+  const reg = new RegExp(`(${find})`, 'gi');
   return str.replace(reg, '<b>$1</b>');
 }
 
 // highlight als Ersatz für Snippets, da max die maximale Textlänge von alten Tweets stark beschränkt ist
-const highlight = (text, search) =>{
-  let returnText= text
-  for(const word of search.split(" ")){
-    returnText= boldString(returnText,word);
+const highlight = (text, search) => {
+  let returnText = text;
+  for (const word of search.split(' ')) {
+    returnText = boldString(returnText, word);
   }
   return returnText;
-}
+};
 
 function initSearch() {
 
@@ -66,11 +67,12 @@ function initSearch() {
     }
 
     output(outDiv, suchwort, results);
+  //   removeOld(true)
   });
 }
 
-document.addEventListener("DOMContentLoaded", () =>  {
-  if(document.readyState === "interactive" || document.readyState === "complete") {
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
     initSearch();
   }
 });
@@ -79,8 +81,32 @@ function output(outDiv, suchwort, results){
   outDiv.innerHTML += '<ul>';
   for (const result of results.docs.slice(0, 10)) {
     outDiv.innerHTML += `<li>${result[TEXT_FIELD]}: ${result[USERNAME_FIELD]}</li>`;
+    createTweetCard(result[USERNAME_FIELD], result[TEXT_FIELD])
   }
   outDiv.innerHTML += '</ul>';
 
   outDiv.innerHTML = highlight(outDiv.innerHTML,suchwort);
 }
+
+  function removeOld(noFilter){
+    if (noFilter){
+      const oldTweets = document.querySelectorAll('.tweetcard')
+      console.log(oldTweets)
+      oldTweets.forEach(tweet => {
+        tweet.remove()
+      });
+    }
+  }
+  
+  function createTweetCard(name, text){
+    const tweet = document.createElement("div")
+    tweet.classList.add("tweetcard")
+    tweet.innerHTML = `
+    <p class="upp">&#128579;</p>
+    <span class="cardhead">
+      <p class="uname marked">${name}</p> <p class="tweetdate light">9.11.2016</p>
+    </span>
+    <p class="tweet">${text}</p>
+    `
+    document.getElementById("main").appendChild(tweet)
+  }

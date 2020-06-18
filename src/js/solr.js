@@ -21,14 +21,14 @@ export default class Solr {
             query: {
                 edismax: {
                     query,
-                     qf: "text^5 user.name^1",
+                    qf: "text^5 user.name^1",
                     // mm: "100%",
                 },
             },
         });
     }
 
-    async postSolrRequest(url, body){
+    async postSolrRequest(url, body) {
         const jsonResponse = await fetch(`${this.solrUrl}/${url}`, {
             method: "POST",
             body: JSON.stringify(body),

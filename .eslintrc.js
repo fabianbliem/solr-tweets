@@ -1,3 +1,4 @@
+/*
 module.exports = {
   env: {
     browser: true,
@@ -17,3 +18,4 @@ module.exports = {
   rules: {
   },
 };
+*/
