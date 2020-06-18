@@ -5,17 +5,22 @@ export const TEXT_FIELD = "text";
 export const TIME_FIELD = "created_at";
 
 export default class Solr {
-    // constructor(solrUrl = "http://52.174.37.46:8983/solr/tweets") {
-    constructor(solrUrl = "http://localhost:8983/solr/tweets2") {
+    constructor(solrUrl = "http://52.174.37.46:8983/solr/tweets") {
         this.solrUrl = solrUrl;
     }
 
-    async search(query, start = 0, rows = 10, filter) {
+    async search(query, start = 0, rows = 10, filter, sort) {
+        let sortvar = "";
+        if(sort){
+            sortvar = "user.followers_count desc"; 
+        }
+
         return await this.postSolrRequest("select", {
             params: {
                 fl: "*,*",
                 df: "text",
                 fq: filter,
+                sort: sortvar,
                 start: start,
                 rows: rows,
             },
@@ -23,7 +28,6 @@ export default class Solr {
                 edismax: {
                     query,
                     qf: "text^5 user.name^1",
-                    // mm: "100%",
                 },
             },
         });

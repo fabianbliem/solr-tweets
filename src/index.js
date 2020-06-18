@@ -5,8 +5,8 @@ import './style/main.scss';
 
 const solr = new Solr();
 
-const suchen = async (line, filter) => {
-  const results = await solr.search(line.trim(),0,10,filter);
+const suchen = async (line, filter, checkbox) => {
+  const results = await solr.search(line.trim(),0,100,filter, checkbox);
   return results;
 }
 
@@ -27,6 +27,7 @@ function boldString(str, find) {
 }
 
 // highlight als Ersatz für Snippets, da max die maximale Textlänge von alten Tweets stark beschränkt ist
+// solr bietet zwar auch eine Operation (hl), die ist aber bei so großen Datenmengen sehr teuer
 const highlight = (text, search) => {
   let returnText = text;
   for (const word of search.split(' ')) {
@@ -39,6 +40,7 @@ function initSearch() {
 
   const dayButton= document.querySelector('.btn-day');
 
+
   dayButton.addEventListener('click', async () => {
 
     const input = document.getElementById('text');
@@ -49,9 +51,10 @@ function initSearch() {
 
     const filter = getFilter(filterInputFrom, filterInputTo);
 
+    const checkbox = document.getElementById('sortby');
     let results;
     let suchwort = input.value;
-    results = await suchen(suchwort,filter);
+    results = await suchen(suchwort,filter,checkbox.checked);
 
     let outDiv = document.getElementById('output');
 
@@ -62,12 +65,11 @@ function initSearch() {
     if(results.numFound <= 3){
       const recomResults = await vorschlagen(suchwort);
       outDiv.innerHTML += `<h3>Meintest du: ${recomResults[0].word} </h3>`;
-      results = await suchen(recomResults[0].word,filter);
+      results = await suchen(recomResults[0].word,filter,checkbox.checked);
       suchwort = recomResults[0].word;
     }
 
     output(outDiv, suchwort, results);
-  //   removeOld(true)
   });
 }
 
@@ -84,7 +86,7 @@ function output(outDiv, suchwort, results){
     `<div class="card tweet">
     <p class="upp">&#128579;</p>
     <span class="cardhead">
-      <p class="uname marked">${result[USERNAME_FIELD]}</p> <p class="tweetdate light">${result[TIME_FIELD]}</p>
+      <p class="uname marked">${result[USERNAME_FIELD]}</p> <p class="tweetdate light">${result[TIME_FIELD][0].substring(0,19)}</p>
     </span>
     <p class="tweet">${result[TEXT_FIELD]}</p>
     </div>`;
