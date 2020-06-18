@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import 'regenerator-runtime/runtime.js';
-import Solr, { TEXT_FIELD, USERNAME_FIELD } from './js/solr';
+import Solr, { TEXT_FIELD, USERNAME_FIELD, TIME_FIELD } from './js/solr';
 import './style/main.scss';
 
 const solr = new Solr();
@@ -78,35 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function output(outDiv, suchwort, results){
-  outDiv.innerHTML += '<ul>';
   for (const result of results.docs.slice(0, 10)) {
-    outDiv.innerHTML += `<li>${result[TEXT_FIELD]}: ${result[USERNAME_FIELD]}</li>`;
-    createTweetCard(result[USERNAME_FIELD], result[TEXT_FIELD])
-  }
-  outDiv.innerHTML += '</ul>';
-
-  outDiv.innerHTML = highlight(outDiv.innerHTML,suchwort);
-}
-
-  function removeOld(noFilter){
-    if (noFilter){
-      const oldTweets = document.querySelectorAll('.tweetcard')
-      console.log(oldTweets)
-      oldTweets.forEach(tweet => {
-        tweet.remove()
-      });
-    }
-  }
-  
-  function createTweetCard(name, text){
-    const tweet = document.createElement("div")
-    tweet.classList.add("tweetcard")
-    tweet.innerHTML = `
+     
+    outDiv.innerHTML += 
+    `<div class="tweetcard">
     <p class="upp">&#128579;</p>
     <span class="cardhead">
-      <p class="uname marked">${name}</p> <p class="tweetdate light">9.11.2016</p>
+      <p class="uname marked">${result[USERNAME_FIELD]}</p> <p class="tweetdate light">${result[TIME_FIELD]}</p>
     </span>
-    <p class="tweet">${text}</p>
-    `
-    document.getElementById("main").appendChild(tweet)
+    <p class="tweet">${result[TEXT_FIELD]}</p>
+    </div>`;
   }
+  outDiv.innerHTML = highlight(outDiv.innerHTML,suchwort);
+}
