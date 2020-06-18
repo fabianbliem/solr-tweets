@@ -25,7 +25,7 @@ function boldString(str, find) {
   var reg = new RegExp('('+find+')', 'gi');
   return str.replace(reg, '<b>$1</b>');
 }
-
+// highlight als Ersatz für Snippets, da max die maximale Textlänge von alten Tweets stark beschränkt ist
 const highlight = (text, search) =>{
   let returnText= text
   for(const word of search.split(" ")){
