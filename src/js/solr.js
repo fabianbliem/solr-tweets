@@ -24,13 +24,15 @@ export default class Solr {
         });
     }
 
-    async search(query, start = 0, rows = 10) {
+    async search(query, start = 0, rows = 10, filter) {
         console.log(query);
+        console.log(filter);
 
         return await this.postSolrRequest("select", {
             params: {
                 fl: "*,*",
                 df: "text",
+                fq: filter,
                 start: start,
                 rows: rows,
                 /* TODO: Put further common query parameters (https://lucene.apache.org/solr/guide/common-query-parameters.html) here. */
