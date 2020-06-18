@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Abschlussprojekt",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js --mode development",
+    "start": "node app.js",
     "build": "webpack --config webpack.config.js --mode production",
     "lint": "./node_modules/.bin/eslint src/index.js"
   },
