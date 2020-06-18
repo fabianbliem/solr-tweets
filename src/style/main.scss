@@ -8,7 +8,7 @@ body{
       font-weight: 700;
     }
     .light{
-      color: #aaa
+      color: $fontlight
     }
     h2, h3{
       font-family:'Muli';
@@ -39,7 +39,8 @@ body{
     header{
         padding-top: 2em;
         display: flex;
-        padding-left: 15vw;
+        justify-content: center;
+        // padding-left: 15vw;
         h1 {
             color: $primaryc;
             font-family: 'Arista';
@@ -95,6 +96,7 @@ body{
           }
           .iconcont{
               vertical-align: middle;
+              margin-left: .5em;
               .icon{
                   vertical-align: middle;
                   transform: rotate(90deg);
@@ -115,11 +117,11 @@ body{
           #openfilters:checked + .filter {
             visibility:visible;
             right:24.6vw;
-            margin-top: 2.2em;
+            margin-top: 2.9em;
             transition: $simpletrans;
           }
       }    
-      .tweetcard{
+      .card{
         display:grid;
         grid-template-columns: auto 1fr 1fr;
         column-gap: 10px;
@@ -146,7 +148,13 @@ body{
         "pic header header"
         "pic tweet tweet"
         ". tweet tweet";
-        
+        &.follower{
+          grid-template-areas: 
+          "pic header header";
+          .cardhead{
+            padding-top: 1em;
+          }
+        }       
       }   
   }
 }
