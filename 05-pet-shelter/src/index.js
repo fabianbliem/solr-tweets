@@ -120,14 +120,18 @@ function initPetShelter() {
   dayButton.addEventListener('click', async ()=>{
     const input = document.getElementById('text');
     const results = await suchen(input.value);
-
     
+    let outDiv = document.getElementById('output');
+    outDiv.innerHTML = '<ul>';
 
-    for (const result of results.docs.slice(0, 5)) {
-      document.getElementById('output').innerHTML += `${result[TEXT_FIELD]}: ${result[USERNAME_FIELD]}`;
+    for (const result of results.docs.slice(0, 10)) {
+      outDiv.innerHTML += `<li>${result[TEXT_FIELD]}: ${result[USERNAME_FIELD]}</li>`;
  }
-
+ outDiv.innerHTML += '</ul>';
   });
+
+  
+  
 
 }
 
