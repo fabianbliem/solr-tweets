@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <title>Tweets from hell</title>
 </head>
 
@@ -11,26 +12,28 @@
   <header>
     <h1>tweets from hell</h1>
     <div class='search'>
-        <label for="search"><img class="icon" src="<%= require('./images/search.svg')%>" alt="search"></label>
-        <input class="query" id="text" type="text" placeholder="wtf" name="search">
-        <button class="btn btn-day">go</button>
+      <label for="search"><img class="icon" src="<%= require('./images/search.svg')%>" alt="search"></label>
+      <input class="query" id="text" type="text" placeholder="wtf" name="search">
+      <button class="btn btn-day">go</button>
     </div>
   </header>
   <div class='search filter'>
-    <label class="light filterlabel">Von: </label><input type="time" step="1" name="von" id="from_date" value="00:00:00">
+    <label class="light filterlabel">Von: </label><input type="time" step="1" name="von" id="from_date"
+      value="00:00:00">
     <label class="light filterlabel">Bis: </label><input type="time" step="1" name="bis" id="to_date" value="23:59:59">
     <label class="light" for="sortby">sort by follower</label>
     <input type="checkbox" id="sortby">
   </div>
   <main id="main">
     <div class="heading">
-        <h2 id="resultsheading">Results</h2>
+      <h2 id="resultsheading">Results</h2>
     </div>
     <div id="output">
       <div class="card tweet">
         <p class="upp">&#128579;</p>
         <span class="cardhead">
-          <p class="uname marked">some user</p> <p class="tweetdate light">9.11.2016 12:30</p>
+          <p class="uname marked">some user</p>
+          <p class="tweetdate light">9.11.2016 12:30</p>
         </span>
         <p class="tweet">So on edge... I'm gonna miss bush after this.</p>
       </div>
